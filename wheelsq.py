@@ -76,7 +76,7 @@ if myplayer is None:
     sys.exit(0)
 
 def get_volume(zone):
-    "get zone info (including current volume)"
+    "get current volume"
     result = zone.volume
     logging.debug("%s, volume: %d", zone.name, result)
     return result
@@ -88,16 +88,19 @@ def play_previous(zone):
     return
 
 def play_next(zone):
+    "skip to next track"
     logging.info("Next track")
     zone.next()
     return
 
 def play_pause(zone):
+    "toggle play/pause"
     logging.info("Play/pause track")
     zone.toggle()
     return
 
 def change_volume(zone, new_vol):
+    "set volumne"
     logging.info("Volume: %d", new_vol)
     zone.volume = new_vol
 
