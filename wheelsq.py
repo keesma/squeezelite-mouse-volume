@@ -105,7 +105,6 @@ def change_volume(zone, new_vol):
     zone.volume = new_vol
 
 short_press = False
-long_press = False
 
 msec = time.time() * 1000
 while True:
@@ -114,7 +113,7 @@ while True:
         for event in dev.read():
 #            print(event)
             if event.code == 8 or event.code == 6:  # scrollwheel
-                if (short_press):
+                if (short_press):  # is play/pause is pressed do prev/next track
                     if event.value < 0:
                         play_previous(myplayer)
                     else:
@@ -130,7 +129,7 @@ while True:
             elif event.code == 277 or event.code == 274: # middle
 #                logging.debug("middle: value: %d", event.value)
                 if event.value == 1:
-                    logging.debug("short press")
+                    logging.debug("play/pause pressed")
                     short_press = True
                     msec = time.time() * 1000
                 else:
@@ -139,10 +138,10 @@ while True:
                     else:
                         logging.debug("play/pause cancelled")
                     short_press = False
-            elif event.code == 272:  # left
+            elif event.code == 272:  # left: previous track
                 if event.value==1:
                     play_previous(myplayer)
-            elif event.code == 273:  # right
+            elif event.code == 273:  # right: next track
                 if event.value == 1:
                     play_next(myplayer)
 #               elif (event.code <> 0 and event.code <> 1):
