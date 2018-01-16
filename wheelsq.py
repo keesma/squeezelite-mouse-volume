@@ -47,7 +47,7 @@ def signal_handler(signal, frame):
 signal.signal(signal.SIGINT, signal_handler)
 
 #logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logging.info('Mouse volume control for a Logitech Media Server player.')
 
 dev = None
@@ -139,10 +139,10 @@ while True:
                     long_press = False
             elif event.code == 272:  # left
                 if event.value==1:
-                    play_previous(zone_id)
+                    play_previous(myplayer)
             elif event.code == 273:  # right
                 if event.value==1:
-                    play_next(zone_id)
+                    play_next(myplayer)
 #               elif (event.code <> 0 and event.code <> 1):
 #                   print(event)
 #                   logging.debug("Mouse event: %s", event.code)
