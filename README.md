@@ -12,7 +12,7 @@ Current configured:
 
 Set the name of you logitech media server and the name of the player you want to control before starting it. Also plugin the mouse receiver before starting it.
 
-SERVER_IP = "lms"
-PLAYER_NAME = "playername"
+- SERVER_IP = "lms"
+- PLAYER_NAME = "playername"
 
 Many thanks to https://github.com/elParaguayo/LMSTools for the LMS library.
