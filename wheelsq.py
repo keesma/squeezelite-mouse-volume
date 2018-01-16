@@ -106,12 +106,12 @@ long_press = False
 
 msec = time.time() * 1000
 while True:
-    r,w,x = select([dev], [], [], 0)
+    r,w,x = select([dev], [], [], 0.1)
     if (r):
         msec = time.time() * 1000
         for event in dev.read():
 #            print(event)
-            if event.code == 8 or event.code==6:  # scrollwheel
+            if event.code == 8 or event.code == 6:  # scrollwheel
                 if (long_press):
                     if event.value < 0:
                         play_previous(myplayer)
@@ -125,9 +125,9 @@ while True:
                     elif new_vol > 100:
                         new_vol=100
                     change_volume(myplayer, new_vol)
-            elif event.code==274: # middle
-                logging.debug("middle: value: %d", event.value)
-                if event.value==1:
+            elif event.code == 277 or event.code == 274: # middle
+#                logging.debug("middle: value: %d", event.value)
+                if event.value == 1:
                     logging.debug("short press")
                     short_press = True
                 else:
@@ -141,7 +141,7 @@ while True:
                 if event.value==1:
                     play_previous(myplayer)
             elif event.code == 273:  # right
-                if event.value==1:
+                if event.value == 1:
                     play_next(myplayer)
 #               elif (event.code <> 0 and event.code <> 1):
 #                   print(event)
