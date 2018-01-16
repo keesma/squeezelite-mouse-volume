@@ -137,6 +137,12 @@ while True:
                     else:
                         logging.debug("long press released")
                     long_press = False
+            elif event.code == 272:  # left
+                if event.value==1:
+                    play_previous(zone_id)
+            elif event.code == 273:  # right
+                if event.value==1:
+                    play_next(zone_id)
 #               elif (event.code <> 0 and event.code <> 1):
 #                   print(event)
 #                   logging.debug("Mouse event: %s", event.code)
