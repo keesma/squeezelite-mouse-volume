@@ -111,11 +111,10 @@ msec = time.time() * 1000
 while True:
     r,w,x = select([dev], [], [], 0.1)
     if (r):
-        msec = time.time() * 1000
         for event in dev.read():
 #            print(event)
             if event.code == 8 or event.code == 6:  # scrollwheel
-                if (long_press):
+                if (short_press):
                     if event.value < 0:
                         play_previous(myplayer)
                     else:
@@ -133,13 +132,13 @@ while True:
                 if event.value == 1:
                     logging.debug("short press")
                     short_press = True
+                    msec = time.time() * 1000
                 else:
-                    short_press = False
-                    if not long_press:
+                    if (time.time() * 1000) <= msec+500:
                         play_pause(myplayer)
                     else:
-                        logging.debug("long press released")
-                    long_press = False
+                        logging.debug("play/pause cancelled")
+                    short_press = False
             elif event.code == 272:  # left
                 if event.value==1:
                     play_previous(myplayer)
@@ -149,9 +148,3 @@ while True:
 #               elif (event.code <> 0 and event.code <> 1):
 #                   print(event)
 #                   logging.debug("Mouse event: %s", event.code)
-    else:
-        if (short_press and not long_press):
-            if (time.time() * 1000) > msec+500:
-                logging.debug("long press, %d ms", time.time()*1000 - msec)
-                long_press = True
-
