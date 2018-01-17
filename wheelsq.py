@@ -77,32 +77,54 @@ if myplayer is None:
 
 def get_volume(zone):
     "get current volume"
-    result = zone.volume
-    logging.debug("%s, volume: %d", zone.name, result)
+    try:
+        result = zone.volume
+        logging.debug("%s, volume: %d", zone.name, result)
+    except:
+        logging.warning("%s, Cannot read volume", zone.name)
+        result = 0;
+        pass;
     return result
 
 def play_previous(zone):
     "skip to previous track"
     logging.info("Previous track")
-    zone.prev()
+    try:
+        zone.prev()
+    except:
+        logging.warning("%s, Cannot play previous track", zone.name)
+        pass;
     return
 
 def play_next(zone):
     "skip to next track"
     logging.info("Next track")
-    zone.next()
+    try:
+        zone.next()
+    except:
+        logging.warning("%s, Cannot play next track", zone.name)
+        pass;
     return
 
 def play_pause(zone):
     "toggle play/pause"
     logging.info("Play/pause track")
-    zone.toggle()
+    try:
+        zone.toggle()
+    except:
+        logging.warning("%s, Cannot play/pause", zone.name)
+        pass;
     return
 
 def change_volume(zone, new_vol):
     "set volumne"
     logging.info("Volume: %d", new_vol)
-    zone.volume = new_vol
+    try:
+        zone.volume = new_vol
+    except:
+        logging.warning("%s, Cannot play/pause", zone.name)
+        pass;
+    return
 
 short_press = False
 
