@@ -3,7 +3,7 @@
 Control squeezelite with a (wireless) mouse running on a raspberry pi.
 Plug the bluetooth mouse receiver into the raspberry pi.
 
-Current configured:
+Current configuration:
 - middle button: play / pause
 - scroll wheel: volume
 - middle button and scroll wheel: previous / next track
