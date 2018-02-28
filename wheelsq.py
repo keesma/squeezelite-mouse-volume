@@ -14,14 +14,13 @@
 #   sudo pip install evdev
 #
 # Verify with "ls /dev/input/*" which events apply for the mouse.
-# Install the roon extension on your roon host (see link below).
 #
 # Many thanks to:
 #   https://www.raspberrypi.org/forums/viewtopic.php?t=42046
 #   https://github.com/elParaguayo/LMSTools
 #
 # To do
-# - retry after some time if amouse has not been found.
+# - retry after some time if a mouse has not been found.
 # - make the script more flexible to support multiple players.
 #
 
@@ -64,7 +63,7 @@ logging.debug("%s", dev.capabilities(verbose=True))
 
 server= LMSServer(SERVER_IP)
 
-# Find the player I am looking for by name
+# Find the player by name
 myplayer = None;
 players = server.get_players()
 for player in players:
