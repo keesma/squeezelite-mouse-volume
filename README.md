@@ -18,3 +18,5 @@ Set the name of you logitech media server and the name of the player you want to
 It is tested with a Raspberry Pi, Logitech M560 mouse with unifying receiver and a IQAudio DigiAmp+.
 
 Many thanks to https://github.com/elParaguayo/LMSTools for the LMS library.
+
+Add the script to the startup of the raspberry.
